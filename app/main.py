@@ -1,4 +1,6 @@
+from fastapi import FastAPI
+from app.api.router import api_router
 
+app = FastAPI(title="Golden Raspberry Awards API")
 
-def app():
-    return "Application running..."
+app.include_router(api_router, prefix="/api/v1")
