@@ -3,8 +3,8 @@ from sqlalchemy import Column, String, ForeignKey
 from app.core.database import Base
 
 
-class MovieProducerModel(Base):
-    __tablename__ = "movie_producer"
+class MovieStudioModel(Base):
+    __tablename__ = "movie_studio"
 
     movie_id = Column(String, ForeignKey('movies.id'), nullable=False, primary_key=True)
-    producer_id = Column(String, ForeignKey('producers.id'), nullable=False, primary_key=True)
+    studio_id = Column(String, ForeignKey('studios.id'), nullable=False, primary_key=True)
