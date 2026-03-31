@@ -5,4 +5,4 @@
 2. modelo de dados baseado no CSV:
 
 
-![mer](https://github.com/user-attachments/assets/0422dbc3-c1e9-4071-abde-7deff0452814)
+<img width="1385" height="416" alt="image" src="https://github.com/user-attachments/assets/a4d43419-6da8-4fe5-8733-1d461e2e51ba" />
