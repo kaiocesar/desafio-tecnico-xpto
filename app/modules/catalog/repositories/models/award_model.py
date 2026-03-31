@@ -2,7 +2,6 @@ from sqlalchemy import Column, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 
 from app.core.database import Base
-from app.modules.catalog.repositories.models.movie_model import MovieModel
 
 
 class AwardModel(Base):
@@ -13,4 +12,8 @@ class AwardModel(Base):
     year = Column(String, nullable=False)
     winner = Column(Boolean, nullable=False)
 
-    movie = relationship(MovieModel, back_populates="awards")
+    movie = relationship(
+        "MovieModel",
+        back_populates="awards",
+        uselist=False
+    )

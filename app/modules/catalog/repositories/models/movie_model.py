@@ -1,5 +1,4 @@
 from sqlalchemy import Column, String
-from sqlalchemy.dialects.postgresql.base import UUID
 from sqlalchemy.orm import relationship
 
 from app.core.database import Base
@@ -26,5 +25,5 @@ class MovieModel(Base):
 
     awards = relationship(
         "AwardModel",
-        back_populates="movies"
+        back_populates="movie"
     )
