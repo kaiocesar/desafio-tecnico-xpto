@@ -41,7 +41,7 @@ def main():
 
             year = row['year']
             title = row['title']
-            winner = bool(row['winner'])
+            winner = True if row['winner'] == 'yes' else False
 
             # ---- studios ----
             studio_names = normalize_list(row['studios'])
@@ -72,7 +72,7 @@ def main():
                 producer_objs.append(producers_cache[name])
 
             # ---- movie ----
-            if studio_objs and producer_objs:
+            if producers_to_insert and studios_to_insert:
                 movie = MovieModel(
                     title=title,
                     release_year=year,
@@ -91,14 +91,11 @@ def main():
                     )
                     awards_to_insert.append(award)
 
-        session.bulk_save_objects(producers_to_insert)
-        session.bulk_save_objects(studios_to_insert)
+                session.add_all(movies_to_insert)
+                session.add_all(awards_to_insert)
 
-        session.add_all(movies_to_insert)
-        session.add_all(awards_to_insert)
-
-        session.flush()
-        session.commit()
+                session.flush()
+                session.commit()
 
         print("Importation completed!")
 
