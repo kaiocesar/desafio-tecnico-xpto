@@ -48,9 +48,14 @@ class AwardService:
             .cte("ranked")
         )
 
-        query = select(ranked_cte).where(
-            (ranked_cte.c.r_max == 1) |
-            (ranked_cte.c.r_min == 1)
+        query_max = select(ranked_cte).where(
+            (ranked_cte.c.r_max <= 2)
+        )
+        query_min = select(ranked_cte).where(
+            (ranked_cte.c.r_min <= 2)
         )
 
-        return self.repository.db.execute(query).mappings().all()
+        return {
+            "max": self.repository.db.execute(query_max).mappings().all(),
+            "min": self.repository.db.execute(query_min).mappings().all(),
+        }
