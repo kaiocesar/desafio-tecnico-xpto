@@ -3,6 +3,9 @@ from abc import ABC, abstractmethod
 
 class IAwardInterface(ABC):
 
+    def __init__(self):
+        self.db = None
+
     @abstractmethod
     def find_all(self):
         pass

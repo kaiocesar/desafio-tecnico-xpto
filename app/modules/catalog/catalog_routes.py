@@ -9,4 +9,4 @@ router = APIRouter(prefix="/catalog", tags=["catalog"])
 @router.get("/awards")
 def list_awards(repo = Depends(get_repository(AwardRepositorySQLAlchemy))):
     service = AwardService(repo)
-    return service.get_award_list()
+    return service.get_award_intervals()
