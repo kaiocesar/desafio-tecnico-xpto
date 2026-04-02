@@ -48,10 +48,20 @@ class AwardService:
             .cte("ranked")
         )
 
-        query_max = select(ranked_cte).where(
+        query_max = select(
+            ranked_cte.c.name.label("producer"),
+            ranked_cte.c.years_between_wins.label("interval"),
+            ranked_cte.c.previous_win_year.label("previousWin"),
+            ranked_cte.c.year.label("followingWin"),
+        ).where(
             (ranked_cte.c.r_max <= 2)
         )
-        query_min = select(ranked_cte).where(
+        query_min = select(
+            ranked_cte.c.name.label("producer"),
+            ranked_cte.c.years_between_wins.label("interval"),
+            ranked_cte.c.previous_win_year.label("previousWin"),
+            ranked_cte.c.year.label("followingWin"),
+        ).where(
             (ranked_cte.c.r_min <= 2)
         )
 
